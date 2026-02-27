@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "徐如生",
+    "email": "xurusheng@example.com",
+    "role": "admin",
+    "password": "123456"
+  },
+  {
+    "id": 2,
+    "name": "张三",
+    "email": "zhangsan@example.com",
+    "role": "user",
+    "password": "123456"
+  },
+  {
+    "id": 3,
+    "name": "李四",
+    "email": "lisi@example.com",
+    "role": "user",
+    "password": "123456"
+  },
+  {
+    "id": 4,
+    "name": "王五",
+    "email": "wangwu@example.com",
+    "role": "user",
+    "password": "123456"
+  }
+]
