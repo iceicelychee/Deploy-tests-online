@@ -152,6 +152,6 @@ app.delete('/users/:id', authenticateToken, (req, res) => {
     res.status(204).send()
 })
 
-app.listen(port, () => {
-    console.log( `服务器已运行在 http://localhost:${port}`)
+app.listen(PORT, () => {
+    console.log( `服务器已运行在 http://localhost:${PORT}`)
 })
