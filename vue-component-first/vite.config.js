@@ -15,4 +15,10 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  devServer: {
+    open: true,
+    host: '0.0.0.0',
+    port: process.env.PORT || 8080,
+    allowedHosts: 'all',
+  },
 })
