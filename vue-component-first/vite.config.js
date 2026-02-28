@@ -16,11 +16,17 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
-  devServer: {
+  server: {
     host: '0.0.0.0',
     port: port,
-    allowedHosts: 'all',
+    allowedHosts: true,
     // 禁用默认的 host 检查，这在云平台环境中有时是必要的
-    disableHostCheck: true,
+    strictPort: true,
+  },
+  preview: {
+    host: '0.0.0.0',
+    port: port,
+    allowedHosts: true,
+    strictPort: true,
   },
 })
