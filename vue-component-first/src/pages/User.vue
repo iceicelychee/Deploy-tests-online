@@ -81,7 +81,7 @@ import axios from 'axios';
             // 添加用户
             async addUser(){
                 try{
-                    const response = await axios.post('http://localhost:3000/users',{
+                    const response = await axios.post(`${import.meta.env.VITE_API_URL}/users`,{
                         name: this.newName,
                         email: this.newEmail        },
                     {headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}}
@@ -101,7 +101,7 @@ import axios from 'axios';
             },
             async handleDelete(userId){
               try{
-                 await axios.delete(`http://localhost:3000/users/${userId}`,{
+                 await axios.delete(`${import.meta.env.VITE_API_URL}/users/${userId}`,{
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
                  });
                 // 从用户列表中删除用户
@@ -123,7 +123,7 @@ import axios from 'axios';
             // 保存编辑
             async saveEdit(userId){
                 try{
-                    const response = await axios.put(`http://localhost:3000/users/${userId}`, {
+                    const response = await axios.put(`${import.meta.env.VITE_API_URL}/users/${userId}`, {
                         name: this.editForm.name,
                         email: this.editForm.email
                     },
