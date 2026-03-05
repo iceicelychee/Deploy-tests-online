@@ -11,7 +11,9 @@ const jwt = require('jsonwebtoken')
 const allowedOrigins = [
   'http://localhost:5173',  // 本地 Vite 默认端口
   'http://localhost:7000',  // 本地后端自己
-  'https://deploytestsonline1.vercel.app'  // 你的 Vercel 前端
+  'https://deploytestsonline1.vercel.app',// 你的 Vercel 前端
+  'https://deploytestsonline1.vercel.app/login'
+    
 ];
 const app = express();
 // 端口配置
@@ -24,17 +26,18 @@ const dataFile = path.join(__dirname, 'users.json')
 // 跨领域请求 中间件
 const cors = require('cors')
 app.use(cors({
-    origin: function(origin, callback){
-        // 允许没有origin的请求
-        if(!origin) return callback(null, true);
-        if(allowedOrigins.indexOf(origin) === -1){
-            const msg = '这个源不被CORS允许';
-            return callback(new Error(msg), false);
-        }
-        return callback(null, true)
-    },
-    credentials: true// 允许携带cookie
-}))
+  origin: function(origin, callback) {
+    // 允许没有 origin 的请求（比如 Postman）
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = `Origin ${origin} 不被允许`;
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true  // 允许携带 cookie 和认证信息
+}));
 
 
 
