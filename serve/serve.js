@@ -7,12 +7,12 @@ require('dotenv').config()
 const jwt = require('jsonwebtoken')
 
 // 允许前端域名
+// 允许的域名列表
 const allowedOrigins = [
-    'http://localhost:9000',// 本地开发
-    'https://deploytestsonline1.vercel.app/login',
-    'https://deploytestsonline.vercel.app/' //线上开发
+  'http://localhost:5173',  // 本地 Vite 默认端口
+  'http://localhost:7000',  // 本地后端自己
+  'https://deploytestsonline1.vercel.app'  // 你的 Vercel 前端
 ];
-
 const app = express();
 // 端口配置
 const PORT = process.env.PORT || 5000;
