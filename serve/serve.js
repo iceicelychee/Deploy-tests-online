@@ -6,6 +6,12 @@ const path = require('path');
 require('dotenv').config()
 const jwt = require('jsonwebtoken')
 
+// 允许前端域名
+const allowedOrigins = [
+    'http://localhost:9000',// 本地开发
+    'https://deploytestsonline1.vercel.app/login',
+    'https://deploytestsonline.vercel.app/' //线上开发
+];
 
 const app = express();
 // 端口配置
@@ -17,7 +23,21 @@ const dataFile = path.join(__dirname, 'users.json')
 
 // 跨领域请求 中间件
 const cors = require('cors')
-app.use(cors())
+app.use(cors({
+    origin: function(origin, callback){
+        // 允许没有origin的请求
+        if(!origin) return callback(null, true);
+        if(allowedOrigineds.indexOf(origin) === -1){
+            const msg = '这个源不被CORS允许';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true)
+    },
+    credentials: true;// 允许携带cookie
+}))
+
+
+
 
 // 根路由： 测试
 app.get('/', (req ,res) => {
