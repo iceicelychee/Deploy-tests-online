@@ -12,7 +12,8 @@ const allowedOrigins = [
   'http://localhost:5173',  // 本地 Vite 默认端口
   'http://localhost:7000',  // 本地后端自己
   'https://deploytestsonline1.vercel.app',// 你的 Vercel 前端
-  'https://deploytestsonline1.vercel.app/login'
+  'https://deploytestsonline1.vercel.app/login',
+  'https://deploytestsonline1-git-master-iceicelychees-projects.vercel.app/'
     
 ];
 const app = express();
