@@ -41,6 +41,8 @@ app.use(cors({
 }));
 
 
+// 解析 JSON 请求体
+app.use(express.json())
 
 
 // 根路由： 测试
@@ -48,8 +50,6 @@ app.get('/', (req ,res) => {
     res.json( { message: 'API 运行正常'})
 })
 
-// 解析 JSON 请求体
-app.use(express.json())
 
 // 注册登入接口
 const login = require('./login')
