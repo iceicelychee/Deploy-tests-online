@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 // import process from 'node:process'
-const port = process.env.PORT || 9000;
+// const port = process.env.PORT || 9000;
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -27,7 +27,7 @@ export default defineConfig({
   },
   preview: {
     host: '0.0.0.0',
-    port: port,
+    port: process.env.PORT || 9000,
     allowedHosts: true,
     strictPort: false,
   },
