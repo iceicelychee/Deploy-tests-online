@@ -27,7 +27,7 @@ app.use(cors({
     origin: function(origin, callback){
         // 允许没有origin的请求
         if(!origin) return callback(null, true);
-        if(allowedOrigineds.indexOf(origin) === -1){
+        if(allowedOrigins.indexOf(origin) === -1){
             const msg = '这个源不被CORS允许';
             return callback(new Error(msg), false);
         }
