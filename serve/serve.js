@@ -26,19 +26,36 @@ const dataFile = path.join(__dirname, 'users.json')
 
 // 跨领域请求 中间件
 const cors = require('cors')
-app.use(cors({
-  origin: function(origin, callback) {
-    // 允许没有 origin 的请求（比如 Postman）
-    if (!origin) return callback(null, true);
+// app.use(cors({
+//   origin: function(origin, callback) {
+//     // 允许没有 origin 的请求（比如 Postman）
+//     if (!origin) return callback(null, true);
     
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = `Origin ${origin} 不被允许`;
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
-  credentials: true  // 允许携带 cookie 和认证信息
+//     if (allowedOrigins.indexOf(origin) === -1) {
+//       const msg = `Origin ${origin} 不被允许`;
+//       return callback(new Error(msg), false);
+//     }
+//     return callback(null, true);
+//   },
+//   credentials: true  // 允许携带 cookie 和认证信息
+// }));
+
+// 允许所有来源（开发阶段用）
+app.use(cors({
+  origin: true,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// 手动处理所有 OPTIONS 请求
+app.options('*', (req, res) => {
+  res.header('Access-Control-Allow-Origin', req.headers.origin);
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.sendStatus(200);
+});
 
 
 // 解析 JSON 请求体
