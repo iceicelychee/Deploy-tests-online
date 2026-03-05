@@ -33,7 +33,7 @@ app.use(cors({
         }
         return callback(null, true)
     },
-    credentials: true;// 允许携带cookie
+    credentials: true// 允许携带cookie
 }))
 
 
