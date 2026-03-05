@@ -22,7 +22,8 @@ import axios from 'axios';
     methods: {
       async login() {
         try {
-          const res = await axios.post('http://localhost:3000/login', {
+          console.log(import.meta.env.VITE_API_URL)
+          const res = await axios.post(`${import.meta.env.VITE_API_URL}/login`, {
             username: this.username,
             password: this.password
           })
@@ -33,7 +34,7 @@ import axios from 'axios';
 
           // 获取当前用户信息
           // 后端通常期待字符串形式的 Authorization 头（例如 "Bearer <token>"），
-          const userRes = await axios.get('http://localhost:3000/users/me', {
+          const userRes = await axios.get(`${import.meta.env.VITE_API_URL}/users/me`, {
             headers: { Authorization: `Bearer ${token}` }
           })
           localStorage.setItem('user',JSON.stringify(userRes.data))
