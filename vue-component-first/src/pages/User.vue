@@ -70,7 +70,7 @@ import axios from 'axios';
             // 获取用户数据
             async fetchUsers(){
                 try{
-                    const res = await axios.get('http://localhost:3000/users', {
+                    const res = await axios.get(`${import.meta.env.VITE_API_URL}/users`, {
                         headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
                      });
                     this.users = res.data;
